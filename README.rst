@@ -14,17 +14,16 @@ Installation
 
 *I plan to add a DockerFile soon*
 
-.. note::
-  Testing so far has only been done with Python 3.5.1
+**Note:** Testing so far has only been done with **Python 3.5.1**
 
-From the root of the cloned repo:
+From the root of the cloned repo::
 
   pip install -r ./requirements.txt
 
 Usage
 -----
 
-To run the server, from the root of the cloned repo:
+To run the server, from the root of the cloned repo::
 
   python -m omechat eventlet
 

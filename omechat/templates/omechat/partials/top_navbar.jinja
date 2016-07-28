@@ -1,0 +1,7 @@
+{% import 'macros/bootstrap3.jinja' as bs3 %}
+
+{% macro brand_content(frontend_framework='React') %}
+  omechat (Flask/{{ frontend_framework }})
+{% endmacro %}
+
+{{ bs3.navbar([], brand_content=brand_content()) }}

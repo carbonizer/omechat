@@ -14,9 +14,12 @@ Installation
 
 *I plan to add a DockerFile soon*
 
+.. note::
+  Testing so far has only been done with Python 3.5.1
+
 From the root of the cloned repo:
 
-  pip install ./requirements.txt
+  pip install -r ./requirements.txt
 
 Usage
 -----

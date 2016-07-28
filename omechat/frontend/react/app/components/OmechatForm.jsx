@@ -64,14 +64,16 @@ export default class OmechatForm extends React.Component {
             <form id={`omechat-form`}
                   className="omechat-form"
                   onSubmit={this._handle_submit}>
-                <div>
-                    <input id="emoji-text-input" type="text" readOnly={true}
+                <div className="input-group">
+                    <input id="emoji-text-input" className="form-control" aria-label="emoji input" type="text" readOnly={true}
                            placeholder={this.props.placeholder}
                            value={this.state.msg}/>
-                    <button type="submit">Send</button>
-                    <button type="reset" onClick={this._handle_reset}>
-                        Clear
-                    </button>
+                    <div className="input-group-btn">
+                        <button className="btn btn-default" type="submit">Send</button>
+                        <button className="btn btn-default" type="reset" onClick={this._handle_reset}>
+                            Clear
+                        </button>
+                    </div>
                 </div>
                 <br />
                 <div>

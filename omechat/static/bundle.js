@@ -147,19 +147,23 @@ webpackJsonp([0],{
 	                    onSubmit: this._handle_submit },
 	                _react2.default.createElement(
 	                    'div',
-	                    null,
-	                    _react2.default.createElement('input', { id: 'emoji-text-input', type: 'text', readOnly: true,
+	                    { className: 'input-group' },
+	                    _react2.default.createElement('input', { id: 'emoji-text-input', className: 'form-control', 'aria-label': 'emoji input', type: 'text', readOnly: true,
 	                        placeholder: this.props.placeholder,
 	                        value: this.state.msg }),
 	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'submit' },
-	                        'Send'
-	                    ),
-	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'reset', onClick: this._handle_reset },
-	                        'Clear'
+	                        'div',
+	                        { className: 'input-group-btn' },
+	                        _react2.default.createElement(
+	                            'button',
+	                            { className: 'btn btn-default', type: 'submit' },
+	                            'Send'
+	                        ),
+	                        _react2.default.createElement(
+	                            'button',
+	                            { className: 'btn btn-default', type: 'reset', onClick: this._handle_reset },
+	                            'Clear'
+	                        )
 	                    )
 	                ),
 	                _react2.default.createElement('br', null),

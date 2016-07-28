@@ -121,8 +121,9 @@ webpackJsonp([0],{
 	        key: 'render',
 	        value: function render() {
 	            var bound_handle_click = this._handle_click;
-	            var button_nodes = '😀 😬 😁 😂 😃 😄 😅 😆 😇 😉'.split(' ').map(function (emoji) {
-	                return _react2.default.createElement(_EmojiButton2.default, { clickHandler: bound_handle_click, value: emoji });
+	            var button_nodes = '😀 😬 😁 😂 😃 😄 😅 😆 😇 😉 😊 🙂 🙃 ☺️ 😋 😌 😍 😘 😗 😙 😚 😜 😝 😛 🤑 🤓 😎 🤗 😏 😶 😐 😑 😒 🙄 🤔 😳 😞 😟 😠 😡 😔 😕 🙁 ☹️ 😣 😖 😫 😩 😤 😮 😱 😨 😰 😯 😦 😧 😢 😥 😪 😓 😭 😵 😲 🤐 😷 🤒 🤕 😴 💤 💩 😈 👿 👹 👺 💀 👻 👽 🤖 😺 😸 😹 😻 😼 😽 🙀 😿 😾 🙌 👏 👋 👍 👊 ✊ ✌️ 👌 ✋ 💪 🙏 ☝️ 👆 👇 👈 👉 🖕 🤘 🖖 ✍️ 💅 👄 👅 👂 👃 👁 👀 👤 🗣 👶 👦 👧 👨 👩 👱 👴 👵 👲 👳 👮 👷 💂 🕵 🎅 👼 👸 👰 🚶 🏃 💃 👯 👫 👬 👭 🙇 💁 🙅 🙆 🙋 🙎 🙍 💇 💆 💑 👩‍❤️‍👩 👨‍❤️‍👨 💏 👩‍❤️‍💋‍👩 👨‍❤️‍💋‍👨 👪 👨‍👩‍👧 👨‍👩‍👧‍👦 👨‍👩‍👦‍👦 👨‍👩‍👧‍👧 👩‍👩‍👦 👩‍👩‍👧 👩‍👩‍👧‍👦 👩‍👩‍👦‍👦 👩‍👩‍👧‍👧 👨‍👨‍👦 👨‍👨‍👧 👨‍👨‍👧‍👦 👨‍👨‍👦‍👦 👨‍👨‍👧‍👧 👚 👕 👖 👔 👗 👙 👘 💄 💋 👣 👠 👡 👢 👞 👟 👒 🎩 ⛑ 🎓 👑 🎒 👝 👛 👜 💼 👓 🕶 💍 🌂'.split(' ').map(function (emoji) {
+	                return _react2.default.createElement(_EmojiButton2.default, { clickHandler: bound_handle_click,
+	                    value: emoji });
 	            });
 	
 	            var message_nodes = this.state.messages.map(function (message) {
@@ -147,39 +148,64 @@ webpackJsonp([0],{
 	                    onSubmit: this._handle_submit },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'input-group' },
-	                    _react2.default.createElement('input', { id: 'emoji-text-input', className: 'form-control', 'aria-label': 'emoji input', type: 'text', readOnly: true,
-	                        placeholder: this.props.placeholder,
-	                        value: this.state.msg }),
+	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'input-group-btn' },
+	                        { className: 'col-xs-6 col-md-8' },
 	                        _react2.default.createElement(
-	                            'button',
-	                            { className: 'btn btn-default', type: 'submit' },
-	                            'Send'
+	                            'div',
+	                            { className: 'row' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-xs-12 input-group' },
+	                                _react2.default.createElement('input', { id: 'emoji-text-input',
+	                                    className: 'form-control',
+	                                    'aria-label': 'emoji input', type: 'text',
+	                                    readOnly: true,
+	                                    placeholder: this.props.placeholder,
+	                                    value: this.state.msg }),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'input-group-btn' },
+	                                    _react2.default.createElement(
+	                                        'button',
+	                                        { className: 'btn btn-default',
+	                                            type: 'submit' },
+	                                        'Send'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'button',
+	                                        { className: 'btn btn-default',
+	                                            type: 'reset',
+	                                            onClick: this._handle_reset },
+	                                        'Clear'
+	                                    )
+	                                )
+	                            )
 	                        ),
+	                        _react2.default.createElement('br', null),
 	                        _react2.default.createElement(
-	                            'button',
-	                            { className: 'btn btn-default', type: 'reset', onClick: this._handle_reset },
-	                            'Clear'
+	                            'div',
+	                            { className: 'row' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'col-xs-12' },
+	                                button_nodes
+	                            )
 	                        )
-	                    )
-	                ),
-	                _react2.default.createElement('br', null),
-	                _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    button_nodes
-	                ),
-	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    message_nodes.length ? message_nodes : _react2.default.createElement(
-	                        'em',
-	                        null,
-	                        'no messages'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'col-xs-6 col-md-4' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            message_nodes.length ? message_nodes : _react2.default.createElement(
+	                                'em',
+	                                null,
+	                                'no messages'
+	                            )
+	                        )
 	                    )
 	                )
 	            );

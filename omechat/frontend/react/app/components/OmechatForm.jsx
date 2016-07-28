@@ -14,7 +14,7 @@ export default class OmechatForm extends React.Component {
         }
     }
 
-    componentDidMount () {
+    componentDidMount() {
         this.socket = io(`http://${document.domain}:${location.port}`,
             {path: `${location.pathname}socket.io`});
         this.socket.on('connect', () => {
@@ -47,12 +47,13 @@ export default class OmechatForm extends React.Component {
 
     render() {
         const bound_handle_click = this._handle_click;
-        const button_nodes = '😀 😬 😁 😂 😃 😄 😅 😆 😇 😉'.split(' ')
+        const button_nodes = '😀 😬 😁 😂 😃 😄 😅 😆 😇 😉 😊 🙂 🙃 ☺️ 😋 😌 😍 😘 😗 😙 😚 😜 😝 😛 🤑 🤓 😎 🤗 😏 😶 😐 😑 😒 🙄 🤔 😳 😞 😟 😠 😡 😔 😕 🙁 ☹️ 😣 😖 😫 😩 😤 😮 😱 😨 😰 😯 😦 😧 😢 😥 😪 😓 😭 😵 😲 🤐 😷 🤒 🤕 😴 💤 💩 😈 👿 👹 👺 💀 👻 👽 🤖 😺 😸 😹 😻 😼 😽 🙀 😿 😾 🙌 👏 👋 👍 👊 ✊ ✌️ 👌 ✋ 💪 🙏 ☝️ 👆 👇 👈 👉 🖕 🤘 🖖 ✍️ 💅 👄 👅 👂 👃 👁 👀 👤 🗣 👶 👦 👧 👨 👩 👱 👴 👵 👲 👳 👮 👷 💂 🕵 🎅 👼 👸 👰 🚶 🏃 💃 👯 👫 👬 👭 🙇 💁 🙅 🙆 🙋 🙎 🙍 💇 💆 💑 👩‍❤️‍👩 👨‍❤️‍👨 💏 👩‍❤️‍💋‍👩 👨‍❤️‍💋‍👨 👪 👨‍👩‍👧 👨‍👩‍👧‍👦 👨‍👩‍👦‍👦 👨‍👩‍👧‍👧 👩‍👩‍👦 👩‍👩‍👧 👩‍👩‍👧‍👦 👩‍👩‍👦‍👦 👩‍👩‍👧‍👧 👨‍👨‍👦 👨‍👨‍👧 👨‍👨‍👧‍👦 👨‍👨‍👦‍👦 👨‍👨‍👧‍👧 👚 👕 👖 👔 👗 👙 👘 💄 💋 👣 👠 👡 👢 👞 👟 👒 🎩 ⛑ 🎓 👑 🎒 👝 👛 👜 💼 👓 🕶 💍 🌂'.split(' ')
             .map((emoji) => {
-            return (
-                <EmojiButton clickHandler={bound_handle_click} value={emoji} />
-            );
-        });
+                return (
+                    <EmojiButton clickHandler={bound_handle_click}
+                                 value={emoji}/>
+                );
+            });
 
         const message_nodes = this.state.messages.map(message => {
             return (
@@ -64,27 +65,48 @@ export default class OmechatForm extends React.Component {
             <form id={`omechat-form`}
                   className="omechat-form"
                   onSubmit={this._handle_submit}>
-                <div className="input-group">
-                    <input id="emoji-text-input" className="form-control" aria-label="emoji input" type="text" readOnly={true}
-                           placeholder={this.props.placeholder}
-                           value={this.state.msg}/>
-                    <div className="input-group-btn">
-                        <button className="btn btn-default" type="submit">Send</button>
-                        <button className="btn btn-default" type="reset" onClick={this._handle_reset}>
-                            Clear
-                        </button>
+                <div className="row">
+                    <div className="col-xs-6 col-md-8">
+                        <div className="row">
+
+                            <div className="col-xs-12 input-group">
+                                <input id="emoji-text-input"
+                                       className="form-control"
+                                       aria-label="emoji input" type="text"
+                                       readOnly={true}
+                                       placeholder={this.props.placeholder}
+                                       value={this.state.msg}/>
+                                <div className="input-group-btn">
+                                    <button className="btn btn-default"
+                                            type="submit">
+                                        Send
+                                    </button>
+                                    <button className="btn btn-default"
+                                            type="reset"
+                                            onClick={this._handle_reset}>
+                                        Clear
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div className="row">
+                            <div className="col-xs-12">
+
+                                {button_nodes}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-xs-6 col-md-4">
+
+                        <div>
+                            {message_nodes.length ?
+                                message_nodes :
+                                <em>no messages</em>}
+                        </div>
                     </div>
                 </div>
-                <br />
-                <div>
-                    {button_nodes}
-                </div>
-                <hr />
-                <div>
-                    {message_nodes.length ?
-                        message_nodes :
-                        <em>no messages</em>}
-                </div>
+
             </form>
         );
     }

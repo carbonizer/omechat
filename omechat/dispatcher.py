@@ -1,18 +1,24 @@
 import importlib
 
-import eventlet
-from eventlet import wsgi
 import flask
 from werkzeug.wsgi import DispatcherMiddleware
 
 from omechat import cfg
 
 
-def create_app_dispatcher():
+def create_app_dispatcher(config=cfg.DISPATCHER_MOUNTS):
+    """Create an app that can dispatch multiple sub apps
+
+    Args:
+        config: A sequence of mount info
+
+    Returns:
+        The app dispatcher
+    """
 
     # Create mounts dict from config info
     mounts = {}
-    for route, qualname in cfg.DISPATCHER_MOUNTS:
+    for route, qualname in config:
         module_qualname, obj_qualname = qualname.split(':', 1)
         print(module_qualname, obj_qualname)
         module = importlib.import_module(module_qualname)
@@ -21,7 +27,6 @@ def create_app_dispatcher():
             obj = getattr(obj, name)
         app = obj
         mounts[route] = app
-
 
     # Base app should just redirect to the first app listed
     base_app = flask.Flask('base')

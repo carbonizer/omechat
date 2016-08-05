@@ -12,6 +12,8 @@ from flask_socketio import SocketIO
 
 import omechat.config as cfg
 
+__version__ = '0.1a1'
+
 logr = cfg.logr
 
 

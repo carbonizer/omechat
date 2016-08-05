@@ -18,6 +18,7 @@ export default class OmechatForm extends React.Component {
         this.socket = io(`http://${document.domain}:${location.port}`,
             {path: `${location.pathname}socket.io`});
         this.socket.on('connect', () => {
+            console.log(`${this.socket.id}`);
             this.socket.emit('my event', {data: 'I\'m connected'});
         });
         this.socket.on('message', data => {
@@ -68,7 +69,6 @@ export default class OmechatForm extends React.Component {
                 <div className="row">
                     <div className="col-xs-6 col-md-8">
                         <div className="row">
-
                             <div className="col-xs-12 input-group">
                                 <input id="emoji-text-input"
                                        className="form-control"
